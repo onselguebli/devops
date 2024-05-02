@@ -35,10 +35,10 @@ jobs:
       - name: Install dependencies
         run: |
           # Commandes pour installer les dépendances nécessaires aux tests
-           mvn clean test
+          npm install --only=dev
       - name: Run automated tests
         run: |
           # Commandes pour exécuter des tests automatisés
-           mvn test
+           npm test ou pytest
 
  
