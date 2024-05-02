@@ -109,6 +109,7 @@ class SpaceInvadersTest {
         assertTrue(bomb.posX >= 50 && bomb.posX <= WIDTH - 50);
         assertEquals(0, bomb.posY);
     }
+
     /*
     @Test
     void testNewBombInvalid() {
