@@ -110,6 +110,7 @@ class SpaceInvadersTest {
         assertEquals(0, bomb.posY);
     }
 
+
     /*
     @Test
     void testNewBombInvalid() {
