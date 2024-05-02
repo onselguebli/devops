@@ -32,13 +32,13 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v2
-      - name: Install dependencies
-        run: |
-          # Commandes pour installer les dépendances nécessaires aux tests
-          npm install --only=dev
-      - name: Run automated tests
-        run: |
-          # Commandes pour exécuter des tests automatisés
-           npm test ou pytest
-
- 
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+          cache: maven
+      - name: Set up Maven memory settings
+        run: export MAVEN_OPTS="-Xmx4g"
+      - name: Install dependencies and run tests
+        run: mvn -B test
