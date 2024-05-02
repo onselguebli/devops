@@ -31,4 +31,20 @@ jobs:
         run: export MAVEN_OPTS="-Xmx4g"
       - name: Build with Maven
         run: mvn -B package --file pom.xml --debug
+test:
+  name: Test
+  runs-on: ubuntu-latest
+  needs: [build] # Ce job dépend du job 'build'
+
+  steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+    - name: Install dependencies
+      run: |
+        # Commandes pour installer les dépendances nécessaires aux tests
+         mvn clean test
+    - name: Run automated tests
+      run: |
+        # Commandes pour exécuter des tests automatisés
+         mvn test
 
