@@ -28,8 +28,3 @@ jobs:
           mvn clean
           mvn -B package --file pom.xml
 
-      - name: Upload Artifact
-        uses: actions/upload-artifact@v3
-        with:
-          name: package
-          path: target/*.jar
