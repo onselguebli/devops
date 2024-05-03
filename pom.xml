@@ -63,20 +63,31 @@
                 </configuration>
             </plugin>
 
-            <!-- Plugin pour générer un fichier JAR exécutable -->
+            <!-- Plugin pour générer un fichier JAR exécutable avec toutes les dépendances incluses -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-jar-plugin</artifactId>
-                <version>3.2.0</version>
+                <artifactId>maven-assembly-plugin</artifactId>
+
+
                 <configuration>
-                    <!-- Configuration de la classe principale -->
                     <archive>
                         <manifest>
-                            <addClasspath>true</addClasspath>
                             <mainClass>com.example.demo1.SpaceInvaders</mainClass>
                         </manifest>
                     </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
                 </configuration>
+                <executions>
+                    <execution>
+                        <id>make-assembly</id>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>single</goal>
+                        </goals>
+                    </execution>
+                </executions>
             </plugin>
 
             <!-- Plugin pour JavaFX -->
