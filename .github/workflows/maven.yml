@@ -26,3 +26,7 @@ jobs:
         run: |
           mvn clean
           mvn -B package --file pom.xml
+      
+
+      - name: Copy JAR file to target directory
+        run: cp target/demo1-1.0-SNAPSHOT.jar target/app.jar
