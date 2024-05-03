@@ -7,8 +7,9 @@ on:
 
 jobs:
   build-deploy:
-    name: Build , Test and deploy
+    name: Build, Test and Deploy
     runs-on: ubuntu-latest
+
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
@@ -26,7 +27,9 @@ jobs:
         run: |
           mvn clean
           mvn -B package --file pom.xml
-      
 
-      - name: Copy JAR file to target directory
-        run: cp target/demo1-1.0-SNAPSHOT.jar target/app.jar
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: package
+          path: target/*.jar
