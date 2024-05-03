@@ -24,11 +24,12 @@ jobs:
         run: mvn -B test --file pom.xml
 
       - name: Build the app
-        run:  mvn clean javafx:jlink -DskipTests
-
+        run: |
+          mvn clean
+          mvn -B package --file pom.xml
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v3
         with:
-          name: executable
-          path: target/space-invaders
+          name: package
+          path: target/*.jar
